@@ -48,11 +48,17 @@ app.post('/register', (req, res) => {
     }else {
         res.json({
             msg: "Successful registration"
+            
         })
     }
-}
+})
 
+// to log the body sent form the postmen into the console.
+app.post('/register', (req, res) => {
+    console.log(req.body)
+    res.send("succeded")
 
+})
 /*
 in postman the below is send
 {"name": "neymar", "job": "player"}
