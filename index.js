@@ -34,11 +34,25 @@ const users = [
 //     }
 // })
 
-// to log the body sent form the postmen into the console.
+// backend validation using post method.
 app.post('/register', (req, res) => {
-    console.log(req.body)
+    const matchedList = users.filter((item,id) => {
+        if(item.name === req.body.name){
+            return item   //now matchedList contains new array with matched names.
+        }
+    })
+    if(matchedList.length > 0){  
+        res.json({
+            msg: "User exists already"
+        })
+    }else {
+        res.json({
+            msg: "Successful registration"
+        })
+    }
+}
 
-})
+
 /*
 in postman the below is send
 {"name": "neymar", "job": "player"}
