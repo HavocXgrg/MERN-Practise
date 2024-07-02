@@ -33,12 +33,19 @@ const users = [
 //         res.send("Error, There is no such user: ")
 //     }
 // })
+
 // to log the body sent form the postmen into the console.
 app.post('/register', (req, res) => {
     console.log(req.body)
 
 })
+/*
+in postman the below is send
+{"name": "neymar", "job": "player"}
+ In console:
+ { name: 'neymar', job: 'player' }
 
+*/
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
