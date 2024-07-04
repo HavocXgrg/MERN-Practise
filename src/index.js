@@ -18,11 +18,28 @@ app.get('/users', async (req,res) => {
   const list = await Users.find()
   if(list) res.json({list})
 })
+
 //DELETE method where a targeted id can be deleted after an id is given after /users/..... in postman
 app.delete('/users/:id', async (req,res) => {
-  const result = await Users.findByIdAndDelete(req.params.id)
-  if(result){
-    res.json({msg:`ID ${req.params.id} deleted successfully`})
+  try{
+    const result = await Users.findByIdAndDelete(req.params.id)
+    if(result){
+      res.json({msg:`ID ${req.params.id} deleted successfully`})
+    }
+  } catch(err){
+    console.log(err)
+  }
+})
+
+// PUT method to edit the user collection
+app.put('/users/:id', async (req,res) => {
+  try{
+    const result = await Users.findByIdAndUpdate(req.params.id, req.body)
+    if(result){
+      res.json({msg:`ID ${req.params.id} updated successfully`})
+    }
+  } catch(err){
+    console.log(err)
   }
 })
 
